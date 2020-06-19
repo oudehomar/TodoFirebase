@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['/todo']);
 
     } else {
-      console.log('there is NOOOO user');
+      // console.log('there is NOOOO user');
     }
   }
 

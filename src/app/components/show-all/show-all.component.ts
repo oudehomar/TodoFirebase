@@ -30,14 +30,14 @@ export class ShowAllComponent implements OnInit {
 
   constructor(public firestore: AngularFirestore, public fAuth: AngularFireAuth, private router: Router) {
 
-    console.log('showAll constructor called');
+    // console.log('showAll constructor called');
     setTimeout(() => 10000);
 
     // الطريقة الحالية لفحص اذا اليوزر مسجل دخول
     fAuth.onAuthStateChanged(user => {
       if (user) {
         // this.getData();
-        console.log('There is a user logged in')
+        // console.log('There is a user logged in')
         this.userid = user.uid;
         sessionStorage.setItem('uid', user.uid);
         this.userName = user.displayName;
@@ -81,7 +81,7 @@ export class ShowAllComponent implements OnInit {
     );
 
 
-    console.log('check if its been added');
+    // console.log('check if its been added');
     this.task = undefined;
     this.description = undefined;
     this.date = undefined;

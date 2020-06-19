@@ -45,12 +45,10 @@ export class LoginComponent implements OnInit {
     this.fAuth.onAuthStateChanged(user => {
       if (user) {
         this.userId = user.uid;
-        console.log('1111111');
 
         sessionStorage.setItem('uid', user.uid);
         // sessionStorage.setItem('name', user.displayName);
 
-        console.log('222222');
 
         this.router.navigate(['/todo']);
       } else {
@@ -63,45 +61,40 @@ export class LoginComponent implements OnInit {
     // auth().currentUser.updateProfile({ displayName: 'Omar' })
 
 
-    if (useration) {
-      console.log('yaaaaa man');
-    }
-    else {
-      console.log('noooooo maaaan');
+    // if (useration) {
+    //   console.log('yaaaaa man');
+    // }
+    // else {
+    //   console.log('noooooo maaaan');
 
-    }
+    // }
   }
   logout() {
-    console.log('1');
     this.fAuth.signOut().catch(error => console.log(error));
-    console.log('2');
 
   }
 
 
-  check(): void {
-    // الحصول على الا id
-    if (auth().currentUser) {
-      console.log(auth().currentUser['uid']);
-    }
-    const useration: any | null = auth().currentUser;
+  // check(): void {
+  //   // الحصول على الا id
+  //   if (auth().currentUser) {
+  //     console.log(auth().currentUser['uid']);
+  //   }
+  //   const useration: any | null = auth().currentUser;
 
 
-    // auth().currentUser.updateProfile({ displayName: 'Omar' })
+  //   // auth().currentUser.updateProfile({ displayName: 'Omar' })
 
 
-    if (useration) {
-      console.log('yaaaaa man');
-    }
-    else {
-      console.log('noooooo maaaan');
+  //   if (useration) {
+  //     console.log('yaaaaa man');
+  //   }
+  //   else {
+  //     console.log('noooooo maaaan');
 
-    }
+  //   }
 
-
-
-
+  // }
 
 
-  }
 }

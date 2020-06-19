@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
     sessionStorage.removeItem('uid')
     sessionStorage.removeItem('name')
-    console.log('should be logged out');
+    // console.log('should be logged out');
     this.router.navigate(['/login'])
 
   }
