@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.delay();
     this.getUserInfo();
 
   }
@@ -38,7 +39,7 @@ export class NavbarComponent implements OnInit {
     this.fAuth.onAuthStateChanged(user => {
       if (user) {
         this.userName = user.displayName;
-        sessionStorage.setItem('name', user.displayName);
+        // sessionStorage.setItem('name', user.displayName);
         console.log(user.displayName);
 
       } else {
@@ -47,4 +48,11 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
+
+
+  delay(){
+    setTimeout(() => {
+      }
+      , 3000);
+}
 }

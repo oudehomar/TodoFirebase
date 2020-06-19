@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'todo', component: ShowAllComponent },
-   { path: '', redirectTo: 'todo', pathMatch: 'full' },
-  // { path: '**', redirectTo: 'todo', pathMatch: 'full' }
+   { path: '', redirectTo: '/todo', pathMatch: 'full' },
+  { path: '**', redirectTo: 'todo', pathMatch: 'full' }
 ];
 
 @NgModule({

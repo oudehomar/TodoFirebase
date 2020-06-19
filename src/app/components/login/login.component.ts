@@ -41,11 +41,18 @@ export class LoginComponent implements OnInit {
       console.log(error.code, ': ', error.message);
     });
 
+    setTimeout(() => 3000);
     this.fAuth.onAuthStateChanged(user => {
       if (user) {
         this.userId = user.uid;
+        console.log('1111111');
+
         sessionStorage.setItem('uid', user.uid);
-        this.router.navigate(['/todo'])
+        // sessionStorage.setItem('name', user.displayName);
+
+        console.log('222222');
+
+        this.router.navigate(['/todo']);
       } else {
         this.router.navigate(['/login']);
       }

@@ -15,6 +15,7 @@ import { Todo } from 'src/app/model/todo';
 })
 export class ShowAllComponent implements OnInit {
 
+  userName: string;
   todos: any | any[] | Observable<any> | Observable<any[]> | Observable<any> | Observable<any>;
 
   showAddTodo = false;
@@ -28,22 +29,30 @@ export class ShowAllComponent implements OnInit {
   done = false;
 
   constructor(public firestore: AngularFirestore, public fAuth: AngularFireAuth, private router: Router) {
+
+    console.log('showAll constructor called');
+    setTimeout(() => 10000);
+
     // الطريقة الحالية لفحص اذا اليوزر مسجل دخول
     fAuth.onAuthStateChanged(user => {
       if (user) {
+        // this.getData();
         console.log('There is a user logged in')
         this.userid = user.uid;
         sessionStorage.setItem('uid', user.uid);
+        this.userName = user.displayName;
+        this.getData();
       } else {
         console.log('No User is logged in ');
         router.navigate(['/login']);
       }
     });
-
-    this.getData();
+    // this.getData();
+    this.userName = sessionStorage.getItem('name');
 
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+   }
 
   getData() {
 
