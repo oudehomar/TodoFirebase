@@ -18,8 +18,29 @@
       <td>{{todo.data.description}}</td>
       <td>{{todo.data.date}}</td>
       <td>{{todo.data.done}}</td>
-      <td><button class="btn btn-outline-danger" (click)="delete(todo.id)">Delete</button>
-      </td>
+      <!-- <td>
+        <button class="btn btn-outline-danger uk-margin-small-right" type="button" uk-toggle="target: #modal-example">Delete</button>
+
+        <div id="modal-example" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Delete {{todo.data.task}} ?</h2>
+              <p>Are You Sure?</p>
+                <p class="uk-text-right">
+                    <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
+                    <button class="btn btn-danger" type="button" (click)="delete(todo.id)">Delete</button>
+                </p>
+            </div>
+        </div>
+
+    </td> -->
+
+
+
+    <td><button class="btn btn-outline-danger" (click)="delete(todo.id)">Delete</button></td>
+
+
+
+
     </tr>
 
 
@@ -27,7 +48,7 @@
 </table>
 
 
-<button class="btn btn-outline-primary" (click)="showForm()"> Add Todo</button>
+<!-- <button class="btn btn-outline-primary" (click)="showForm()"> Add Todo</button>
 
 <form style="margin: 5%;width: 30%;" *ngIf="showAddTodo">
 
@@ -47,7 +68,45 @@
   </div>
 
   <button type="submit" class="btn btn-primary" (click)="addTodo()">Submit</button>
-</form>
+</form> -->
+
+
+
+<button class="btn btn-outline-primary uk-margin-small-right" type="button" uk-toggle="target: #modal-example">Add Todo New</button>
+
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h1 class="uk-modal-title">Add Todo</h1>
+
+        <form >
+
+          <div class="form-group">
+            <label >Task</label>
+            <input type="text" class="form-control" name="task" [(ngModel)]="task">
+          </div>
+
+          <div class="form-group">
+            <label >Description</label>
+            <textarea type="text" class="form-control" name="description" [(ngModel)]="description"></textarea>
+            </div>
+
+          <div class="form-group">
+            <label>date</label>
+            <input type="date" class="form-control" name="date" [(ngModel)]="date" >
+          </div>
+
+          <!-- <button type="submit" class="btn btn-primary" (click)="addTodo()">Submit</button> -->
+        </form>
+
+      </div>
+      <div class="uk-modal-dialog uk-modal-body">
+      <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
+      <button class="btn btn-danger" type="button" (click)="addTodo()">Add</button>
+    </div>
+</div>
+
+
+
 
 
 <!-- {{userid}}

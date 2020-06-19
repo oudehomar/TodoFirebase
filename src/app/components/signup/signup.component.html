@@ -39,7 +39,9 @@
 								<button class="uk-button uk-button-primary uk-button-large uk-width-1-1"  (click)="signup()">Sign Up</button>
 							</div>
 							<div class="uk-text-small uk-text-center">
-								Do you have an account? <a [routerLink]="['/login']">Then Login</a>
+                Do you have an account? <a [routerLink]="['/login']">Then Login</a>
+                <p style="color: red;">{{error}}</p>
+
 							</div>
 						</form>
 					</div>

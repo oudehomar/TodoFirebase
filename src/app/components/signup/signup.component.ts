@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
   email: string;
   password: string;
   name: string;
+  error: string;
 
   // auth().currentUser.updateProfile({ displayName: 'Omar' })
 
@@ -37,19 +38,23 @@ export class SignupComponent implements OnInit {
 
 
   signup() {
-    sessionStorage.setItem('name', this.name);
 
     this.fAuth.createUserWithEmailAndPassword(this.email, this.password).catch(error => {
+      this.error = error.message;
       console.log(error.code, error.message);
+      sessionStorage.removeItem('name');
+      this.name = undefined;
+    }).then(()=>{
+      this.router.navigate(['/signup'])
     });
+    sessionStorage.setItem('name', this.name);
     // console.log('user created?');
 
     auth().onAuthStateChanged(user => {
       user.updateProfile({ displayName: this.name }).catch(err => console.log(err));
     });
-    setTimeout(() => 2000);
-    // console.log('user Name Added?');
-    this.go_next();
+    // setTimeout(() => 2000);
+    // this.go_next();
   }
 
 
