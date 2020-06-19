@@ -1,0 +1,60 @@
+
+<h1>Hello xxx</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todos" >
+      <th scope="row">{{todo.id}}</th>
+      <td>{{todo.data.task}}</td>
+      <td>{{todo.data.description}}</td>
+      <td>{{todo.data.date}}</td>
+      <td>{{todo.data.done}}</td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+
+<button class="btn btn-outline-primary" (click)="showForm()"> Add Todo</button>
+
+<form style="margin: 5%;width: 30%;" *ngIf="showAddTodo">
+
+  <div class="form-group">
+    <label >Task</label>
+    <input type="text" class="form-control" name="task" [(ngModel)]="task">
+  </div>
+
+  <div class="form-group">
+    <label >Description</label>
+    <textarea type="text" class="form-control" name="description" [(ngModel)]="description"></textarea>
+    </div>
+
+  <div class="form-group">
+    <label >date</label>
+    <input type="date" class="form-control" name="date" [(ngModel)]="date" >
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="addTodo()">Submit</button>
+</form>
+
+
+<!-- {{userid}}
+<br>
+<br>
+
+
+{{todos |json}}
+<br>
+<br>
+{{todoFromClass.id}}
+<br>
+{{todoFromClass.dataFromServer |json}} -->

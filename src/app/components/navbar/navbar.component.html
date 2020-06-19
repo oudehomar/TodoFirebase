@@ -1,0 +1,28 @@
+
+    <nav class="uk-navbar-container" uk-navbar>
+
+
+      <div class="uk-navbar-right">
+
+          <ul class="uk-navbar-nav">
+              <li>
+                  <a href="#" class="uk-text-bold">Profile</a>
+
+
+                  <div class="uk-navbar-dropdown">
+                    <h2 class="uk-text">{{userName}}</h2>
+
+                    <li> <img src="https://c7.uihere.com/files/136/22/549/user-profile-computer-icons-girl-customer-avatar.jpg"
+                       alt="">
+                    </li>
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+                          <li><a  class="uk-text-warning">Edit Profile</a></li>
+                          <li><a class="uk-text-danger" (click)="logout()">Log Out</a></li>
+                      </ul>
+                  </div>
+              </li>
+          </ul>
+
+      </div>
+    </nav>
+

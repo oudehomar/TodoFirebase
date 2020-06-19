@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-38769": {
+      "hosting": {
+        "TodoFirebase": [
+          "todo-38769"
+        ]
+      }
+    }
+  }
+}
