@@ -8,6 +8,7 @@
       <th scope="col">Description</th>
       <th scope="col">Date</th>
       <th scope="col">Done</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,8 @@
       <td>{{todo.data.description}}</td>
       <td>{{todo.data.date}}</td>
       <td>{{todo.data.done}}</td>
+      <td><button class="btn btn-outline-danger" (click)="delete(todo.id)">Delete</button>
+      </td>
     </tr>
 
 

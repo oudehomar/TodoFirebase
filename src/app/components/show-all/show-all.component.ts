@@ -52,7 +52,7 @@ export class ShowAllComponent implements OnInit {
 
   }
   ngOnInit(): void {
-   }
+  }
 
   getData() {
 
@@ -101,6 +101,13 @@ export class ShowAllComponent implements OnInit {
     // else {
     //   console.log('noooooo maaaan');
     // }
+  }
+
+  delete(todoId: string) {
+    console.log(todoId);
+
+    this.firestore.collection('users').doc(sessionStorage.getItem('uid')).collection('todo').doc(todoId).delete();
+
   }
 
 
