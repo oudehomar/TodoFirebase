@@ -1,4 +1,3 @@
-
 <h1 style="text-align: center;">Hello {{userName}}</h1>
 <table class="table">
   <thead class="thead-dark">
@@ -8,39 +7,64 @@
       <th scope="col">Description</th>
       <th scope="col">Date</th>
       <th scope="col">Done</th>
+      <th scope="col">Change Status</th>
+      <th scope="col">Update</th>
       <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let todo of todos" >
+    <tr *ngFor="let todo of todos " >
       <th scope="row">{{todo.id}}</th>
       <td>{{todo.data.task}}</td>
       <td>{{todo.data.description}}</td>
       <td>{{todo.data.date}}</td>
       <td>{{todo.data.done}}</td>
-      <!-- <td>
-        <button class="btn btn-outline-danger uk-margin-small-right" type="button" uk-toggle="target: #modal-example">Delete</button>
+      <td><input #v class="btn btn-outline-primary t" type="checkbox" (click)="changeStatus(todo.id)" >
+      </td>
 
-        <div id="modal-example" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body">
-                <h2 class="uk-modal-title">Delete {{todo.data.task}} ?</h2>
-              <p>Are You Sure?</p>
-                <p class="uk-text-right">
-                    <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
-                    <button class="btn btn-danger" type="button" (click)="delete(todo.id)">Delete</button>
-                </p>
+      <td>
+
+                                                  <!-- Update -->
+
+<button class="btn btn-outline-primary uk-margin-small-right" type="button" uk-toggle="target: #modal-example1" (click)="printId(todo.id)" >Update</button>
+
+<div id="modal-example1" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h1 class="uk-modal-title">Update Todo</h1>
+
+        <form *ngIf="newTodo">
+
+          <div class="form-group">
+            <label >Task</label>
+            <input type="text"  class="form-control" name="task" placeholder="{{newTodo.task}}" [(ngModel)]="taskToBeUpdated">
+          </div>
+
+          <div class="form-group">
+            <label >Description</label>
+            <textarea type="text" class="form-control" name="description" placeholder="{{newTodo.description}}" [(ngModel)]="descriptionToBeUpdated"></textarea>
             </div>
-        </div>
 
-    </td> -->
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" name="date" placeholder="{{newTodo.date}}" [(ngModel)]="dateToBeUpdated" >
+          </div>
+
+          <div class="form-group">
+            <label>Done</label>
+            <input type="checkbox" class="form-control" name="done" placeholder="{{newTodo.done}}" [(ngModel)]="doneToBeUpdated" >
+          </div>
+        </form>
+
+      </div>
+      <div class="uk-modal-dialog uk-modal-body">
+      <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
+      <button class="btn btn-danger" type="button" (click)="update()">Update</button>
+    </div>
+</div>
+      </td>
 
 
-
-    <td><button class="btn btn-outline-danger" (click)="delete(todo.id)">Delete</button></td>
-
-
-
-
+      <td><button class="btn btn-outline-danger" (click)="delete(todo.id)">Delete</button></td>
     </tr>
 
 
@@ -82,7 +106,7 @@
 
           <div class="form-group">
             <label >Task</label>
-            <input type="text" class="form-control" name="task" [(ngModel)]="task">
+            <input type="text" class="form-control" name="task" [(ngModel)]="task" value="OOO">
           </div>
 
           <div class="form-group">
@@ -95,7 +119,6 @@
             <input type="date" class="form-control" name="date" [(ngModel)]="date" >
           </div>
 
-          <!-- <button type="submit" class="btn btn-primary" (click)="addTodo()">Submit</button> -->
         </form>
 
       </div>
@@ -105,18 +128,3 @@
     </div>
 </div>
 
-
-
-
-
-<!-- {{userid}}
-<br>
-<br>
-
-
-{{todos |json}}
-<br>
-<br>
-{{todoFromClass.id}}
-<br>
-{{todoFromClass.dataFromServer |json}} -->

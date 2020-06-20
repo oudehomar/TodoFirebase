@@ -28,6 +28,15 @@ export class ShowAllComponent implements OnInit {
   date: string;
   done = false;
 
+  newTodo: any;
+
+  taskToBeUpdated: string;
+  descriptionToBeUpdated: string;
+  dateToBeUpdated: string;
+  doneToBeUpdated = false;
+  idToBeUpdated: string;
+
+
   constructor(public firestore: AngularFirestore, public fAuth: AngularFireAuth, private router: Router) {
 
     // console.log('showAll constructor called');
@@ -62,7 +71,9 @@ export class ShowAllComponent implements OnInit {
           return changes.map(doc => {
             return {
               id: doc.payload.doc.id,
-              data: doc.payload.doc.data()
+              data: doc.payload.doc.data(),
+
+
             };
           });
         })
@@ -81,11 +92,10 @@ export class ShowAllComponent implements OnInit {
     );
 
 
-    // console.log('check if its been added');
     this.task = undefined;
     this.description = undefined;
     this.date = undefined;
-    this.done = undefined;
+    // this.done = undefined;
   }
 
   showForm() {
@@ -112,4 +122,77 @@ export class ShowAllComponent implements OnInit {
 
 
 
+  printId(st: string) {
+    console.log(st);
+    this.idToBeUpdated = st;
+
+    this.firestore.collection('users').doc(sessionStorage.getItem('uid')).collection('todo').doc(st).get()
+      .subscribe(x => {
+        this.newTodo = x.data()
+        console.log(x.data());
+
+      }
+      );
+
+
+
+  }
+  update() {
+
+    this.firestore.collection('users').doc(sessionStorage.getItem('uid')).collection('todo').doc(this.idToBeUpdated).update({
+      task: this.taskToBeUpdated,
+      description: this.descriptionToBeUpdated,
+      date: this.dateToBeUpdated,
+      done: this.doneToBeUpdated
+    });
+    console.log('Updated?');
+    this.taskToBeUpdated = undefined;
+    this.dateToBeUpdated = undefined;
+    this.descriptionToBeUpdated = undefined;
+    this.doneToBeUpdated = undefined;
+  }
+
+  changeStatus(id: string) {
+    this.printId(id);
+    this.firestore.collection('users').doc(sessionStorage.getItem('uid')).collection('todo').doc(id).update({
+      done: !this.newTodo.done
+    });
+    console.log('Updated?');
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //     .pipe(
+    //       map(changes => {
+    //         return changes.map(doc => {
+    //           return {
+    //             id: doc.payload.doc.id,
+    //             data: doc.payload.doc.data(),
+
+
+    //           };
+    //         });
+    //       })
+    //     ).subscribe(todo => {
+    //       this.todos = todo;
+    //     });
+    // }
+
+
+
