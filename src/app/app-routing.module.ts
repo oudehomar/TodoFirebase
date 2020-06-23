@@ -1,3 +1,4 @@
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ShowAllComponent } from './components/show-all/show-all.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
@@ -9,7 +10,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'todo', component: ShowAllComponent },
-   { path: '', redirectTo: '/todo', pathMatch: 'full' },
+  { path: 'edit/:uid', component: EditProfileComponent },
+  { path: '', redirectTo: '/todo', pathMatch: 'full' },
   { path: '**', redirectTo: 'todo', pathMatch: 'full' }
 ];
 

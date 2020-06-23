@@ -11,7 +11,20 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   userName=sessionStorage.getItem('name')
+  userId: string;
   constructor(public fAuth: AngularFireAuth, private router: Router) {
+
+    this.fAuth.onAuthStateChanged(user => {
+      if (user) {
+        this.userId = user.uid;
+        // sessionStorage.setItem('name', user.displayName);
+        console.log(user.displayName);
+
+      } else {
+        console.log('Something went wrong!');
+
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -54,5 +67,10 @@ export class NavbarComponent implements OnInit {
     setTimeout(() => {
       }
       , 3000);
+}
+
+editProfile(){
+  console.log(this.userId);
+
 }
 }

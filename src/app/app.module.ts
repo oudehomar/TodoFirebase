@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     LoginComponent,
     SignupComponent,
     ShowAllComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
