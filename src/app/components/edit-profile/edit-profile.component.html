@@ -1,47 +1,73 @@
-
-
-
 <div class="uk-card uk-card-default " style="width: 30%; margin-left: 35%; margin-top: 5%; height: auto;">
   <div class="uk-card-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-          <div class="uk-width-auto">
-              <img class="uk-border-circle" width="50" height="50" src={{useration.photoURL}}>
-          </div>
-          <div class="uk-width-expand">
-              <h3 class="uk-card-title uk-margin-remove-bottom">Edit Your Profile</h3>
-              <input  type="file" (change)="upload($event)" accept=".png, .jpg" name="2">
-              <br>
-              <p *ngIf="uploadPercent">{{uploadPercent|async}}%</p>
-                      </div>      </div>
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+      <div class="uk-width-auto">
+        <img class="uk-border-circle" width="50" height="50" src={{useration.photoURL}}>
+      </div>
+
+    </div>
   </div>
   <div class="uk-card-body">
-      <p>tlit, sed do eiusmod tempor</p>
+    <!-- <p>tlit, sed do eiusmod tempor</p> -->
+    <form>
+      <div class="uk-width-expand" style="border: 1px solid #e5e5e5;padding: 5%;">
+        <h3 class="uk-card-title uk-margin-remove-bottom">Edit Your Profile</h3>
+        <input type="file" (change)="upload($event)" accept=".png, .jpg" name="2">
+        <p *ngIf="uploadPercent">{{uploadPercent|async}}%</p>
+        <p *ngIf="processing">Processing ..</p>
+      </div>
+      <br>
+
+      <div class="form-group uk-width-expand" style="border: 1px solid #e5e5e5;padding: 5%;">
+        <label>Name</label>
+        <input type="text" class="form-control" name="task" placeholder="{{useration.displayName}}"
+          [(ngModel)]="newName">
+      </div>
+
+    </form>
+    <div class=" uk-modal-body">
+      <button class="btn btn-outline-primary" [routerLink]="['/todo']">Go Back</button>
+      <button class="btn btn-outline-danger" type="button"  (click)="update()">Update</button>
+    </div>
   </div>
-  <div class="uk-card-footer">
-    <a class="btn btn-outline-primary"[routerLink]="['/todo']">Go back</a>
 
 
-    <button class="btn btn-outline-primary uk-margin-small-right" type="button" uk-toggle="target: #modal-example1" (click)="print()" >Update</button>
 
-<div id="modal-example1" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <h1 class="uk-modal-title">Update Todo</h1>
 
-        <!-- <input type="text"  class="form-control" name="task" placeholder="{{newTodo.task}}" [(ngModel)]="taskToBeUpdated"> -->
 
-        <form >
+  <!-- <div class="uk-card-footer">
 
-          <div class="form-group">
-            <label >Name</label>
-            <input type="text"  class="form-control" name="task" placeholder="{{useration.displayName}}" [(ngModel)]="newName" >
+
+    <button class="btn btn-outline-primary uk-margin-small-right" type="button" uk-toggle="target: #modal-example1"
+      (click)="print()">Update</button>
+
+    <div id="modal-example1" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <h1 class="uk-modal-title">Update Your Profile</h1>
+
+
+        <form>
+          <div class="uk-width-expand" style="border: 1px solid #e5e5e5;padding: 5%;">
+            <h3 class="uk-card-title uk-margin-remove-bottom">Edit Your Profile</h3>
+            <input type="file" (change)="upload($event)" accept=".png, .jpg" name="2">
+            <p *ngIf="uploadPercent">{{uploadPercent|async}}%</p>
           </div>
+          <br>
+
+          <div class="form-group uk-width-expand" style="border: 1px solid #e5e5e5;padding: 5%;">
+            <label>Name</label>
+            <input type="text" class="form-control" name="task" placeholder="{{useration.displayName}}"
+            [(ngModel)]="newName">
+          </div>
+
         </form>
 
       </div>
       <div class="uk-modal-dialog uk-modal-body">
-      <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
-      <button class="btn btn-danger" type="button" (click)="update()">Update</button>
+        <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
+        <button class="btn btn-danger" type="button" (click)="update()">Update</button>
+      </div>
     </div>
-</div>  </div>
+  </div> -->
 </div>
-
+<!-- <input type="text"  class="form-control" name="task" placeholder="{{newTodo.task}}" [(ngModel)]="taskToBeUpdated"> -->

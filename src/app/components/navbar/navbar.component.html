@@ -1,31 +1,31 @@
-    <nav class="uk-navbar-container" uk-navbar *ngIf="userId">
+<nav class="uk-navbar-container" uk-navbar *ngIf="userId">
 
 
-      <div class="uk-navbar-right">
+  <div class="uk-navbar-right">
 
-          <ul class="uk-navbar-nav">
-              <li>
-                  <a href="#" class="uk-text-bold">Profile</a>
-
-
-                  <div class="uk-navbar-dropdown">
-                    <h2 class="uk-text" style="text-align: center;">{{userName}}</h2>
-
-                    <li> <img src={{profileImg}} alt="Profile photo">
-                    </li>
-                      <ul class="uk-nav uk-navbar-dropdown-nav">
-
-                        <br>
-                        <li><button  class="btn uk-text-warning" style="margin-left: 10%;" [routerLink]="['/edit',userId]" (click)="editProfile()">Edit Profile</button></li>
+    <ul class="uk-navbar-nav">
+      <li>
+        <a href="#" class="uk-text-bold">Profile</a>
 
 
+        <div class="uk-navbar-dropdown">
+          <h2 class="uk-text" style="text-align: center;">{{userName}}</h2>
 
-                          <li><button class=" btn uk-text-danger" style="margin-left: 10%;" (click)="logout()">Log Out</button></li>
-                      </ul>
-                  </div>
-              </li>
-          </ul>
+      <li> <img src={{profileImg}} alt="Profile photo">
+      </li>
+      <ul class="uk-nav uk-navbar-dropdown-nav">
 
-      </div>
-    </nav>
+        <li><button class="btn uk-text-warning" style="margin-left: 10%;" [routerLink]="['/edit',userId]"
+            (click)="editProfile()">
+            <p style="font-weight: bold;">Edit Profile</p>
+          </button></li>
+        <li><button class=" btn uk-text-danger" style="margin-left: 10%;" (click)="logout()">
+            <p style="font-weight: bolder;">Log Out</p>
+          </button></li>
+      </ul>
+  </div>
+  </li>
+  </ul>
 
+  </div>
+</nav>

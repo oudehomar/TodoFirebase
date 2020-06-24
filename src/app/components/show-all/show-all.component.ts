@@ -39,7 +39,6 @@ export class ShowAllComponent implements OnInit {
 
   constructor(public firestore: AngularFirestore, public fAuth: AngularFireAuth, private router: Router) {
 
-    // console.log('showAll constructor called');
     setTimeout(() => 10000);
 
     // الطريقة الحالية لفحص اذا اليوزر مسجل دخول

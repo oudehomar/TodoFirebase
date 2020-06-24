@@ -20,12 +20,12 @@ export class EditProfileComponent implements OnInit {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
 
-  profileUrl: Observable<string | null>;
-
-
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   imgURL2: string;
+
+  processing = false;
+
   constructor(private fAuth: AngularFireAuth, private route: ActivatedRoute, private store: AngularFireStorage, private router: Router) {
   }
 
@@ -46,26 +46,17 @@ export class EditProfileComponent implements OnInit {
   }
 
   update() {
-    setTimeout(() => 20000);
 
-    if (this.imgURL2 != null || undefined) {
       auth().currentUser.updateProfile({
         displayName: this.newName,
-        photoURL: this.imgURL2
       }).catch(error => console.log(error)
       );
 
-    }
-
-    else {
-      auth().currentUser.updateProfile({
-        displayName: this.newName,
-      }).catch(error => console.log(error));
-    }
 
   }
 
   upload(event) {
+
     const id = Math.random().toString(36);
     this.ref = this.store.ref(this.uid + '/profilePicture/' + id);
     this.task = this.ref.put(event.target.files[0]);
@@ -76,16 +67,39 @@ export class EditProfileComponent implements OnInit {
     this.task.snapshotChanges().pipe(
       finalize(() => this.downloadURL = this.ref.getDownloadURL()))
       .subscribe();
-    this.downloadURL.subscribe(u => this.imgURL2 = u);
+    this.setTimeDelay();
 
   }
 
 
 
-  print() {
-    this.downloadURL.subscribe(u => this.imgURL2 = u);
-    console.log('URL: ' + this.imgURL2);
 
+  setTimeDelay() {
+    this.processing = true;
+
+    setTimeout(() => {
+      this.downloadURL.subscribe(u => this.imgURL2 = u);
+      console.log('from Subscribe1');
+
+    }
+      , 1000);
+
+    setTimeout(() => {
+
+      auth().currentUser.updateProfile({
+        displayName: this.newName,
+        photoURL: this.imgURL2,
+
+
+      }).catch(error => console.log(error)
+      );
+      console.log('from editing 2');
+      this.processing = false;
+      window.location.reload();
+
+    }
+      , 1500);
+    console.log('from setTimedelay3');
   }
+
 }
-
