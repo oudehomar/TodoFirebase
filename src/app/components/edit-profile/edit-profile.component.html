@@ -1,13 +1,85 @@
-
+{{imgURL2}}
+x
+<!--
 
 <div class="card" style="width: 18rem; margin-left: 40%; margin-top: 5%;">
   <img src="https://startbootstrap.com/assets/img/branding/og-start-bootstrap.png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Hello {{useration.displayName}}</h5>
     <p class="card-text">Your E-Mail: {{useration.email}}  </p>
-    <a class="btn btn-primary">Go somewhere</a>
+    <a class="btn btn-outline-primary"[routerLink]="['/todo']">Go back</a>
 
+
+    <button class="btn btn-outline-primary uk-margin-small-right" type="button" uk-toggle="target: #modal-example1" (click)="printId(todo.id)" >Update</button>
+
+<div id="modal-example1" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h1 class="uk-modal-title">Update Todo</h1>
+
+
+        <form >
+
+          <div class="form-group">
+            <label >Name</label>
+            <input type="text"  class="form-control" name="task" placeholder="{{useration.displayName}}" [(ngModel)]="newName" >
+          </div>
+        </form>
+
+      </div>
+      <div class="uk-modal-dialog uk-modal-body">
+        <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
+        <button class="btn btn-danger" type="button" (click)="update()">Update</button>
+      </div>
+    </div>
   </div>
-</div>
+</div> -->
 
+<!-- <input type="text"  class="form-control" name="task" placeholder="{{newTodo.task}}" [(ngModel)]="taskToBeUpdated"> -->
+
+
+<div class="uk-card uk-card-default " style="width: 30%; margin-left: 35%; margin-top: 5%; height: auto;">
+  <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+          <div class="uk-width-auto">
+              <img class="uk-border-circle" width="40" height="40" src={{useration.photoURL}}>
+          </div>
+          <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Edit Your Profile</h3>
+              <input type="file" (change)="upload($event)" accept=".png, .jpg">Upload photo
+              <br>
+              {{downloadURL|async}}
+              {{uploadPercent|async}}%
+                      </div>      </div>
+      <button (click)="print()">CKICK TO PRINT</button>
+  </div>
+  <div class="uk-card-body">
+      <p>tlit, sed do eiusmod tempor</p>
+  </div>
+  <div class="uk-card-footer">
+    <a class="btn btn-outline-primary"[routerLink]="['/todo']">Go back</a>
+
+
+    <button class="btn btn-outline-primary uk-margin-small-right" type="button" uk-toggle="target: #modal-example1" (click)="print()" >Update</button>
+
+<div id="modal-example1" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h1 class="uk-modal-title">Update Todo</h1>
+
+        <!-- <input type="text"  class="form-control" name="task" placeholder="{{newTodo.task}}" [(ngModel)]="taskToBeUpdated"> -->
+
+        <form >
+
+          <div class="form-group">
+            <label >Name</label>
+            <input type="text"  class="form-control" name="task" placeholder="{{useration.displayName}}" [(ngModel)]="newName" >
+          </div>
+        </form>
+
+      </div>
+      <div class="uk-modal-dialog uk-modal-body">
+      <button class="btn btn-light  uk-modal-close" type="button">Cancel</button>
+      <button class="btn btn-danger" type="button" (click)="update()">Update</button>
+    </div>
+</div>  </div>
+</div>
 
