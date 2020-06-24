@@ -1,4 +1,4 @@
-    <nav class="uk-navbar-container" uk-navbar>
+    <nav class="uk-navbar-container" uk-navbar *ngIf="userId">
 
 
       <div class="uk-navbar-right">
@@ -9,19 +9,18 @@
 
 
                   <div class="uk-navbar-dropdown">
-                    <h2 class="uk-text">{{userName}}</h2>
+                    <h2 class="uk-text" style="text-align: center;">{{userName}}</h2>
 
-                    <li> <img src="https://c7.uihere.com/files/136/22/549/user-profile-computer-icons-girl-customer-avatar.jpg"
-                       alt="">
+                    <li> <img src={{profileImg}} alt="Profile photo">
                     </li>
                       <ul class="uk-nav uk-navbar-dropdown-nav">
 
-                        <li><button  class="uk-text-warning" [routerLink]="['/edit',userId]" (click)="editProfile()">Edit Profile</button></li>
+                        <br>
+                        <li><button  class="btn uk-text-warning" style="margin-left: 10%;" [routerLink]="['/edit',userId]" (click)="editProfile()">Edit Profile</button></li>
 
 
 
-
-                          <li><a class="uk-text-danger" (click)="logout()">Log Out</a></li>
+                          <li><button class=" btn uk-text-danger" style="margin-left: 10%;" (click)="logout()">Log Out</button></li>
                       </ul>
                   </div>
               </li>

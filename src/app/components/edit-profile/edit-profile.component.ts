@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, storage } from 'firebase/app';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
@@ -25,9 +25,8 @@ export class EditProfileComponent implements OnInit {
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
-  imgURL: string;
   imgURL2: string;
-  constructor(private fAuth: AngularFireAuth, private route: ActivatedRoute, private storage: AngularFireStorage) {
+  constructor(private fAuth: AngularFireAuth, private route: ActivatedRoute, private store: AngularFireStorage, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -37,15 +36,12 @@ export class EditProfileComponent implements OnInit {
       if (user) {
         this.useration = user;
         console.log('From Here:' + user.photoURL);
-
-
       } else {
         console.log('Something went wrong!');
+        this.router.navigate(['/login']);
 
       }
     });
-
-
 
   }
 
@@ -55,7 +51,7 @@ export class EditProfileComponent implements OnInit {
     if (this.imgURL2 != null || undefined) {
       auth().currentUser.updateProfile({
         displayName: this.newName,
-        photoURL:  this.imgURL2
+        photoURL: this.imgURL2
       }).catch(error => console.log(error)
       );
 
@@ -64,18 +60,14 @@ export class EditProfileComponent implements OnInit {
     else {
       auth().currentUser.updateProfile({
         displayName: this.newName,
-
-      }).catch(error => console.log(error))
-
+      }).catch(error => console.log(error));
     }
-
-
 
   }
 
   upload(event) {
     const id = Math.random().toString(36);
-    this.ref = this.storage.ref(this.uid + '/profilePicture/' + id);
+    this.ref = this.store.ref(this.uid + '/profilePicture/' + id);
     this.task = this.ref.put(event.target.files[0]);
     console.log('uploaded?');
 
@@ -86,10 +78,7 @@ export class EditProfileComponent implements OnInit {
       .subscribe();
     this.downloadURL.subscribe(u => this.imgURL2 = u);
 
-
-
   }
-
 
 
 

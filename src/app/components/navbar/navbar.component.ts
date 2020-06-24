@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  userName=sessionStorage.getItem('name')
+  userName = sessionStorage.getItem('name')
   userId: string;
+  profileImg: string;
   constructor(public fAuth: AngularFireAuth, private router: Router) {
 
     this.fAuth.onAuthStateChanged(user => {
       if (user) {
         this.userId = user.uid;
-        // sessionStorage.setItem('name', user.displayName);
+        this.profileImg = user.photoURL;
         console.log(user.displayName);
 
       } else {
@@ -44,6 +45,8 @@ export class NavbarComponent implements OnInit {
     sessionStorage.removeItem('name')
     // console.log('should be logged out');
     this.router.navigate(['/login'])
+    this.userId = undefined;
+    this.profileImg = undefined;
 
   }
 
@@ -63,14 +66,14 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  delay(){
+  delay() {
     setTimeout(() => {
-      }
+    }
       , 3000);
-}
+  }
 
-editProfile(){
-  console.log(this.userId);
+  editProfile() {
+    console.log(this.userId);
 
-}
+  }
 }
