@@ -1,8 +1,11 @@
 <div class="uk-card uk-card-default " style="width: 30%; margin-left: 35%; margin-top: 5%; height: auto;">
-  <div class="uk-card-header">
-    <div class="uk-grid-small uk-flex-middle" uk-grid>
-      <div class="uk-width-auto">
-        <img class="uk-border-circle" width="50" height="50" src={{useration.photoURL}}>
+  <div class="uk-card-header" style="padding: 10px 40px;">
+    <div class="uk-grid-small uk-flex-middle" >
+      <div style="display:inline-block;vertical-align:top;float: left;">
+        <img class="uk-border-circle" width="60" height="60" src={{useration.photoURL}}>
+      </div>
+      <div  style="display:inline-block;margin-top: 3%;">
+        <h3>{{useration.displayName}}</h3>
       </div>
 
     </div>
@@ -25,9 +28,9 @@
       </div>
 
     </form>
-    <div class=" uk-modal-body">
+    <div class=" uk-modal-body" style="border: 1px solid #e5e5e5; ">
       <button class="btn btn-outline-primary" [routerLink]="['/todo']">Go Back</button>
-      <button class="btn btn-outline-danger" type="button"  (click)="update()">Update</button>
+      <button class="btn btn-outline-danger" type="button"  (click)="update()" style="margin: 13px;">Update</button>
     </div>
   </div>
 

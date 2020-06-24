@@ -95,7 +95,7 @@ export class EditProfileComponent implements OnInit {
       );
       console.log('from editing 2');
       this.processing = false;
-      window.location.reload();
+      // window.location.reload();
 
     }
       , 1500);
